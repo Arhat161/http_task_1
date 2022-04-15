@@ -1,6 +1,5 @@
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -36,7 +35,8 @@ public class Main {
 
         System.out.println();
 
-        facts.stream().filter(value -> value.getUpvotes() != null).forEach(System.out::println);
+        facts.stream().filter(value -> value.getUpvotes() != null && Integer.parseInt(value.getUpvotes()) > 0)
+                .forEach(System.out::println);
 
     }
 }
